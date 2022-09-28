@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1900">
+  <title>chapter 2</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+  <link rel="stylesheet" href="vendor/reveal/reset.css">
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css"><!--edit-->
+  <!-- Pollyfill script -->
+  <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+  <!-- Live2DCubismCore script -->
+  <script src="./dist/live2dcubismcore.js"></script>
+  <!-- Build script -->
+  <script src="./dist/bundle.js"></script>
+  <style>
+    ul, ol{
+      list-style: none;
+      margin-left: 0;
+    }
+    .reveal {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 26px;
+    }
+    #pageIndex{
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      background: #000;
+      color: #fff;
+      font-size: 20px;
+    }
+    .controls{
+      bottom: 24px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!--
+         data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+         data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+         data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+         data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+         data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+      -->
+      <section>
+        <h3 >BMI (進階題)</h3>
+        <section
+          data-no="6" 
+          data-positionx="0.8" 
+          data-positiony="0.03" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left"><br>
+          BMI = weight(KG) / height^2(M^2)<br>
+          For example, 52 Kg, 155 cm, BMI =52 KG/1.55^2 (M^2) = 21.60<br><br>
+          Input:<br>
+          (1) height (Integer, cm)<br>
+          (2) weight (Integer, pound 磅 )<br>
+          (3) -1 (exit)<br>
+          (4) 1 M = 100 cm, 1 pound = 0.454 KG<br><br>
+          Output:<br>
+          (1) Normal height: 0.5~2.50 M (0.5&lt;=height&lt;=2.50).<br>
+          &nbsp;&nbsp;&emsp;Normal weight: 20~300 KG (20&lt;=weight&lt;=300).<br>
+          (2) If height not in normal, then output "Input Height Error".<br>
+          &nbsp;&nbsp;&emsp;If weight no in normal, then output "Input Weight error".<br>
+          (3) If 18.50&lt;=BMI&lt;=24.00,then output the BMI value<br>
+          &nbsp;&nbsp;&emsp;(無條件捨去至小數點後第二位).<br>
+          (4) If BMI too high (&gt;24.00), then output "BMI too high".<br>
+          (5) If BMI too low (&lt;18.50), then output "BMI too low".<br>  
+        </section>
+      </section>
+
+      <section>
+        <h3 >BMI (進階題)</h3>
+        <section
+        data-no="6" 
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left"><br>
+        <img src="img/ch2/in_out.png" style="display:block; margin:auto;">
+        </section>
+      </section>
+
+      <section>
+        <h3 >Tips</h3>
+        <section
+          data-no="17" 
+          data-positionx="0.75" 
+          data-positiony="0.05" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left"><br><br><br><br><br>
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              #include&lt;stdio.h&gt;
+                    
+              int main(void) {
+      
+                // 可重複輸入身高體重計算BMI，能一再輸入，直到輸入-1 結束
+
+                // 輸入身高體重
+
+                // 轉換身高體重的單位
+
+                // 判斷身高體重是否在範圍內
+
+                // 計算BMI
+
+                // 判斷BMI是否太高或太低並輸出結果
+                
+                return 0;
+              }
+            </code></pre> 
+          </section>
+        </section>
+      </section>
+
+      <section>
+        <h3 >If&emsp;else</h3>
+        <section
+          data-no="17" 
+          data-positionx="0.75" 
+          data-positiony="0.05" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left">
+          <br><br>
+          if<br>
+          &emsp;假如&lt;條件式&gt;成立，就會執行&lt;敘述區段&gt;，否則不執行。
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              if(條件式)
+              {
+                敘述區段; // 若敘述區段只有一行敘述，大括號可省略
+              }
+            </code></pre> 
+          </section><br>
+          if else<br>
+          &emsp;假如&lt;條件式&gt;成立，就會執行&lt;敘述區段A&gt;，否則就會執行&lt;敘述區段B&gt;。
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              if(條件式)
+              {
+                敘述區段A;
+              }
+              else
+              {
+                敘述區段B;
+              }
+            </code></pre> 
+          </section>
+        </section>
+      </section>
+
+      <section>
+        <h3 >If ... else&nbsp;&nbsp;if ... else</h3>
+        <section
+          data-no="17" 
+          data-positionx="0.75" 
+          data-positiony="0.05" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left">
+          <br><br>
+          一個 if 語句後可跟一個可選的 else if...else 語句，這可用於測試多種條件。<br><br>
+          當使用 if...else if...else 語句時，以下三點需要注意：<br>
+          &emsp;1. 一個 if 後可跟零個或一個 else，else 必須在所有 else if 之後。<br>
+          &emsp;2. 一個 if 後可跟零個或多個 else if，else if 必須在 else 之前。<br>
+          &emsp;3. 一旦某個 else if 匹配成功，其他的 else if 或 else 將不會被測試。<br>
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              if( x == 10 )
+                printf("A, ");
+
+              else if( x == 20 )
+                printf("B, ");
+
+              else if( x == 30)
+                printf("C, ");
+
+              else
+                printf("沒有匹配的值, ");
+
+              printf("x 的值是 %d\n", x);
+            </code></pre> 
+            若 x = &nbsp;10, 程式結果 : A, x 的值是 10<br>
+            若 x = &nbsp;20, 程式結果 : B, x 的值是 20<br>
+            若 x = 100, 程式結果 : 沒有匹配的值, x 的值是 100
+          </section>
+        </section>
+      </section>
+
+      <section>
+        <h3 >if ... else 搭配運算子</h3>
+        <section
+          data-no="17" 
+          data-positionx="0.75" 
+          data-positiony="0.05" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left">
+          <br><br>
+          邏輯運算子 || 的意義為「或」。
+          A || B : 若A、B其中只要有一個為真，結果為真。
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              // 判斷身高是否在範圍內
+              if(height_m <= 0.5 || height_m >= 2.50)
+              {
+                printf("Input Height Error\n");
+              }
+            </code></pre> 
+          </section>
+          邏輯運算子 && 的意義為「且」。
+          A && B : 當A、B皆為真時，結果才為真。
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              // 判斷BMI是否太高或太低並輸出結果
+              if(??? && ???) // 18.50&lt;=BMI&lt;=24.00
+              {
+                printf("%.2lf\n", BMI-???); // 輸出會自動進行四捨五入，此題要求改成無條件捨去至小數點後第二位，可以參考ch02第70頁的例題
+              }
+              else if(???)
+              {
+                printf("BMI too high\n");
+              }
+              else
+              {
+                printf("BMI too low\n");
+              }
+            </code></pre> 
+          </section>
+        </section>
+      </section>
+
+      <section>
+        <h3 >While&emsp;Loop</h3>
+        <section
+          data-no="17" 
+          data-positionx="0.75" 
+          data-positiony="0.05" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left">
+          <br><br>
+          當程式中一個敘述區段需重複執行的次數無法預測時，可使用條件式迴圈來解決。<br><br>
+          &emsp;1. 前測試迴圈：while...<br>
+          &emsp;&emsp;若&lt;條件式&gt;成立，則進入迴圈內執行&lt;敘述區段A&gt;一次；<br>
+          &emsp;&emsp;否則離開迴圈，執行敘述區段B。
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              while(條件式)
+              {
+                敘述區段A;
+              }
+              敘述區段B;
+            </code></pre> 
+          </section>
+          &emsp;2. 後測試迴圈：do...while<br>
+          &emsp;&emsp;先執行迴圈內的敘述圈段A一次，再檢查是否滿足&lt;條件式&gt;。<br>
+          &emsp;&emsp;若&lt;條件式&gt;成立，則繼續執行&lt;敘述區段A&gt;；<br>
+          &emsp;&emsp;否則離開迴圈，執行&lt;敘述區段B&gt;。
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              do{
+
+                敘述區段A;
+
+              }while(條件式);
+              敘述區段B;
+            </code></pre> 
+          </section>
+        </section>
+      </section>
+
+      <section>
+        <h3 >While&emsp;Loop 流程圖</h3>
+        <section
+          data-no="17" 
+          data-positionx="0.75" 
+          data-positiony="0.05" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left"><br><br>
+          <img src="img/ch2/flow_chart.png" style="display:block; margin:auto;"><br><br>
+          「無窮迴圈」表示迴圈的&lt;條件式&gt;結果無法變為false，一旦執行便是無止盡的迴繞<br>
+          無法離開迴圈，所以編寫迴圈程式時要特別留意&lt;條件式&gt;。
+        </section>
+      </section>
+
+      <section>
+        <h3 >break</h3><br>
+        <section
+          data-no="17" 
+          data-positionx="0.75" 
+          data-positiony="0.05" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left"><br><br>
+          使用時機：主要用於中斷目前的迴圈執行。<br><br>
+          以下面程式來說，如果執行到 if 敘述時其&lt;條件式&gt;成立，執行 break 敘述之後，程式流程就會省略&lt;敘述區段B&gt;，直接跳到&lt;敘述區段C&gt;去執行。
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              while ( ..... )
+              {
+                  敘述區段A;
+                  if (條件式)
+                  {
+                    break ; // 離開迴圈
+                  }
+                  敘述區段B;
+              }
+              敘述區段C;
+            </code></pre> 
+          </section>
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              int i = 0;    
+              while(i < 10)
+              {
+                  i++;
+                  if(i == 5)
+                      break;
+
+                  printf("i = %d, ", i);
+              }
+            </code></pre> 
+            output : i = 1, i = 2, i = 3, i = 4,           
+          </section>
+        </section>
+      </section>
+
+      <section>
+        <h3 >continue</h3><br>
+        <section
+          data-no="17" 
+          data-positionx="0.75" 
+          data-positiony="0.05" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left"><br><br>
+          使用時機：在某些情況下如果需要暫停『本次』迴圈時使用。<br><br>
+          以下面程式來說，如果執行到 if 敘述時其&lt;條件式&gt;成立，執行continue敘述之後，程式流程就會省略&lt;敘述區段B&gt;(當作本次迴圈已經執行完畢)，回到迴圈的&lt;條件式&gt;判斷。換言之就是本次迴圈執行完畢，繼續下一次的條件式檢視。
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              while ( ..... )
+              {
+                敘述區段A;
+                if (條件式)
+                {
+                  continue ; // 暫停『本次』迴圈，回到迴圈的條件式判斷
+                }
+                敘述區段B;
+              }
+            </code></pre> 
+          </section>
+          <section data-auto-animate>
+            <pre><code data-trim data-noescape>
+              int i = 0;    
+              while(i < 10)
+              {
+                  i++;
+                  if(i == 5)
+                      continue;
+
+                  printf("i = %d, ", i);
+              }
+            </code></pre> 
+            output : i = 1, i = 2, i = 3, i = 4, i = 6, i = 7, i = 8, i = 9, i = 10, 
+          </section>
+        </section>
+      </section>  
+    </div>
+  </div>
+  <div id="pageIndex"></div>
+  <!-- reveal.js-->
+  <script src="vendor/reveal/reveal.js"></script>
+  <!--plugin-->
+  <script src="vendor/reveal/plugin/math/math.js"></script>
+  <script src="vendor/reveal/plugin/search/search.js"></script>
+  <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+  <script src="vendor/reveal/plugin/notes/notes.js"></script>
+  <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+  <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+  <script src="main-ppt.js"></script>
+</body>
+
+</html>
