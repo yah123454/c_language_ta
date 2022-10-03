@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1900">
+    <title>chapter 4</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/reveal/reset.css">
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css">
+    <!--edit-->
+    <!-- Pollyfill script -->
+    <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./dist/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./dist/bundle.js"></script>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .reveal {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 26px;
+        }
+
+        #pageIndex {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .controls {
+            bottom: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--
+            data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+            data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+            data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+            data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+            data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+            -->
+            <section>
+                <h3>進制轉換 (進階題)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    將給定進制的無號數字轉換為指定進制,輸入及輸出使用 0~9 及 A~F 表示,其中 A~F 相當於十進位的 10~15。<br><br>
+                    <img src="img/ch4/illustrate.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>進制轉換 (進階題)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch4/in_out1.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>進制轉換 (進階題)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch4/in_out2.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+
+            <section>
+                <h3>Tips</h3>
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br><br><br><br>
+                    <section data-auto-animate>
+                        <pre><code data-trim data-noescape>
+                            #include&lt;stdio.h&gt;
+                            #include&lt;stdbool.h&gt;
+
+                            int main(void) {
+
+                                char number[16];            // 待轉換數字的進制
+                                char converted_number[30];  // 存十進制整數除指定的轉換進制的餘數
+                                int before_radix;           // 待轉換數字的進制
+                                int after_radix;            // 指定的轉換進制
+                                unsigned long num = 0;      // 轉換後的十進制整數
+                                bool error = false;
+                                char table[17] = "0123456789ABCDEF";
+
+                                // 輸入待轉換數字
+
+                                // 輸入待轉換數字的進制(2~16)
+
+                                // 輸入指定的轉換進制(2~16)
+
+                                // 判斷待轉換數字的進制和指定的轉換進制是否在2~16內
+
+                                // 將待轉換數字的進制整數按權值展開後轉換為十進制整數
+
+                                // 檢查輸入是數字還是字母
+
+                                // 檢查轉換數字與進制是否矛盾
+
+                                // 十進制整數採用“除 指定的轉換進制 取餘”轉換為指定的轉換進制整數
+
+                                // 將字串converted_number反轉後輸出
+                                
+                                return 0;
+                            }
+                        </code></pre>
+                    </section>
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br><br><br><br>
+                    <section data-auto-animate>
+                        <pre><code data-trim data-noescape>           
+                            // 將待轉換數字的進制整數按權值展開後轉換為十進制整數
+                            for (int i = 0; number[i] != '\0'; i++) // '\0'在c語言中代表著字串的結束    
+                            {	
+                                // 檢查輸入是數字還是字母
+                                if(number[i] >= '0' && number[i] <= '9')
+                                {
+                                    // 檢查轉換數字與進制是否矛盾
+                                    if(number[i] - '0' >= before_radix)
+                                    {
+                                        ???
+                                    }
+                                    else
+                                        num = num * before_radix + number[i] - '0';
+                                }
+                                else
+                                {
+                                    if(number[i] - 'A' + 10 >= before_radix)
+                                    {
+                                        ???
+                                    }
+                                    else
+                                        ???
+                                }
+                            }
+                        </code></pre>
+                    </section>
+                </section>
+            </section>
+
+            <section>
+                <h3>ASCII</h3>
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left">
+                    <br><br>
+                    字母a、b、C、D...以及數字0、1...還有一些常用的符號（例如*、#、@...）在電腦中儲存時也要使用二進位數來表示，而具體用哪些二進位數字表示哪個符號，這就是編碼。如果不同的電腦要想互相通信而不造成混亂，那麼每台電腦就必須使用相同的編碼規則，於是美國有關的標準化組織就推出了ASCII編碼。<br>
+                    <img src="img/ch4/ASCII.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>bool</h3>
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left">
+                    <br><br>
+                    C 語言標準(C89) 沒有定義布爾類型，如果你使用 true 和 false，會出現錯誤。<br><br>
+                    C99 有提供一個標頭檔<stdbool.h>定義了 bool，true 代表 1，false 代表 0。<br><br>
+                        <section data-auto-animate>
+                            <pre><code data-trim data-noescape>           
+                                #include &lt;stdio.h&gt;
+                                #include &lt;stdbool.h&gt;
+                                    
+                                int main() {
+
+                                    bool error = true;  // 可改寫為 bool error = 1;
+                                        
+                                    if(error == false)
+                                        printf("0");
+
+                                    else
+                                        printf("1");
+                                    
+                                    return 0;
+                                }
+                            </code></pre>
+                            &emsp;&emsp;output : 1
+                        </section>
+                </section>
+            </section>
+
+            <section>
+                <h3>資料型態</h3>
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left">
+                    <br><br>
+                    注意：以下是典型的資料位長和範圍。編譯器可能使用不同的資料位長和範圍。<br>&emsp;&emsp;&emsp;請參考具體的參考。<br><br>
+                    <img src="img/ch4/unsigned_number.png" style="display:block; margin:auto;"><br>
+                </section>
+            </section>
+
+            <section>
+                <h3>資料型態</h3>
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left">
+                    <br><br>
+                    標準標頭檔&lt;llimits.h&gt; 中說明了基礎資料的長度<br><br>
+                    <img src="img/ch4/unsigned_number_limits.png" style="display:block; margin:auto;">
+                    <section data-auto-animate>
+                        <pre><code data-trim data-noescape>           
+                            #include &lt;stdio.h&gt;
+                            #include &lt;limits.h&gt;
+
+                            int main() {
+                                
+                                printf("The max value ot type unsigned is %u\n", UINT_MAX);
+                                printf("The max value of type unsigned long is %lu\n", ULONG_MAX);
+                                printf("The max value of type unsigned long long is %llu\n", ULLONG_MAX);
+                                
+                                return 0;
+                            }
+                        </code></pre>
+                        &emsp;&emsp;output : <br>
+                        &emsp;&emsp;The max value ot type unsigned is 4294967295<br>
+                        &emsp;&emsp;The max value of type unsigned long is 18446744073709551615<br>
+                        &emsp;&emsp;The max value of type unsigned long long is 18446744073709551615<br>
+                    </section>
+                </section>
+            </section>
+        </div>
+    </div>
+    <div id="pageIndex"></div>
+    <!-- reveal.js-->
+    <script src="vendor/reveal/reveal.js"></script>
+    <!--plugin-->
+    <script src="vendor/reveal/plugin/math/math.js"></script>
+    <script src="vendor/reveal/plugin/search/search.js"></script>
+    <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+    <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+    <script src="main-ppt.js"></script>
+</body>
+
+</html>
