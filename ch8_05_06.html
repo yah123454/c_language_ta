@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1900">
+    <title>chapter 8</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/reveal/reset.css">
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css">
+    <!--edit-->
+    <!-- Pollyfill script -->
+    <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./dist/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./dist/bundle.js"></script>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .reveal {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 26px;
+        }
+
+        #pageIndex {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .controls {
+            bottom: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--
+            data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+            data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+            data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+            data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+            data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+            -->
+            <section>
+                <h3>撲克牌梭哈(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    Suit: Spade (S), Heart (H), Diamond (D), Club (C). S > H > D > C.<br><br>
+
+                    Face: A, 2, ..., J, Q, K. The point of 2~10 is 2~10,<br>
+                    &emsp;&emsp;&ensp;A is 14, and J is 11, Q is 12, K is 13.<br><br>
+
+                    Type 編號:<br>
+                    &emsp;1. 散牌 : 單一張牌。<br>
+                    &emsp;2. 一對 : 兩張數字一樣為 Pair。<br>
+                    &emsp;3. 兩對 : 2 組 Pair 的牌為 Two pair。<br>
+                    &emsp;4. 三條 : 三張一樣數字的為 Three of a Kind。<br>
+                    &emsp;5. 順子 : 數字連續的 5 張牌為 Straight,包括[2, 3, 4, 5, 6],..,<br>
+                    &emsp;&emsp;[11, 12, 13, 14, 2], [12, 13 ,14, 2, 3], [13 ,14, 2, 3, 4], [14,2, 3, 4, 5]。<br>
+                    &emsp;6. 同花 : 五張同一花色的牌為 Flush。<br>
+                    &emsp;7. 葫蘆 : Three of a Kind 加一個 Pair 為 Full House。<br>
+                    &emsp;8. 四條 : 四張一樣數字為 Four of a Kind。<br>
+                    &emsp;9. 同花順 : 數字連續的 5 張且花色一樣為 Straight Flush。<br>
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌梭哈(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    輸入說明:<br>
+                    &emsp;輸入兩組牌,判斷哪組牌型編號較大,輸出編號。<br>
+                    &emsp;1.每一列輸入一組牌 5 張撲克 encode,空格分開。<br>
+                    &emsp;&emsp;(encode : Face+Suit. 10S is Spade 10, 7D is diamond 7, QC is club Q.)<br>
+                    &emsp;2. 檢查任一組是否輸入錯誤,若錯誤,output "Error input"。<br>
+                    &emsp;3. 檢查所有牌是否有重複,若重複,output "Duplicate deal" 。<br>
+                    &emsp;4. "Error input"和"Duplicate deal"同時發生則輸出"Error input"<br><br>
+
+                    輸出說明 :<br>
+                    &emsp;1. 根據輸入,輸出相對應的牌型,1~9 整數,代表牌型編號; 以「最大牌型輸出」。<br>
+                    &emsp;2. 數字連續定義為:K(13) 和 A(14) 有相連,A(14) 和 2 有相連,依此類推。<br>
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌梭哈(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch8/in_out5.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌梭哈(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1. 散牌&emsp;&emsp;&emsp;6. 同花<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;2. 一對&emsp;&emsp;&emsp;7. 葫蘆<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;3. 兩對&emsp;&emsp;&emsp;8. 四條<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;4. 三條&emsp;&emsp;&emsp;9. 同花順<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;5. 順子<br><br><br>
+                    <img src="img/ch8/demo5.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>
+                        #include&lt;stdio.h&gt;
+                        #include&lt;stdbool.h&gt;
+
+                        int card_type(int arr[]); // 找出該組牌的最大牌型
+
+                        int main()
+                        {
+                            char Face[] = {'2','3','4','5','6','7','8','9',' ','J','Q','K','A'}; // 把10略過可以讓陣列保持一維，另外作判斷看數字是否為10
+                            char Suit[] = {'C','D','H','S'};
+                            char set[10][5]; // 以字串方式儲存牌組
+                            int  set_int[10] = {0}; // 把牌組存成整數
+                            int  set_1_int[5], set_2_int[5]; // 第一組牌, 第二組牌
+
+                            // 輸入兩組牌
+
+                            // 把牌組轉換成對應數字 Face * 10 + Suit，要注意數字10 
+
+                            // 把set_int分成兩個字串set_1_int、set_2_int 
+
+                            // 把set_1_int、set_2_int由小到大排序
+
+                            // 把set_1_int、set_2_int丟到card_type，取得各自的最大牌型編號
+
+                            // 比較哪個牌型較大，輸出最大牌型編號
+                            
+                            return 0;
+                        }
+
+                        int card_type(int arr[])
+                        {
+                            int set[5]; // 儲存傳入的陣列
+                            bool is_type[10] = {false}; // 牌組是否形成牌型
+                            int same_num[4] = {0}; // 從index後面算有幾張是相同的數字
+
+                            is_type[1] = true; // 無牌型為散牌
+                            
+                            // 判斷是否為 順子(5)
+
+                            // 判斷是否為 同花(6)
+
+                            // 判斷是否為 同花順(9) = 同花(6) + 順子(5), 若是直接回傳 9
+
+                            // 計算牌組中有多少張數字一樣的牌,
+                            for(int i = 0; i &lt; 4; i++)
+                            {
+                                for(int j = i + 1; j &lt;= 4; j++)
+                                {
+                                    if(set[i] / 10 == set[j] / 10)
+                                    {
+                                        same_num[i]++;
+                                    }
+                                }
+                                i += same_num[i];
+                            }
+
+                            // 根據same_num可以判斷是否為四條(8)、三條(4)、兩對(3)、一對(2), 若是四條直接回傳 8
+
+                            // 判斷是否為 葫蘆(7) = 三條(4) + 一對(2), , 若是直接回傳 7
+
+                            // 若是牌型 7、8、9 前面已return，且要輸出最大牌型，所以從牌型6開始由大到小檢查是否符合
+                        }
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    Face * 10 + Suit<br><br>
+                    例 :<br>
+                    QH &ensp;KD &ensp;AC &ensp;2D &ensp;3S<br>
+                    122 &ensp;131 &ensp;140 &ensp;21 &ensp;33 &ensp;排序後&ensp;->&ensp; 21 &ensp;33 &ensp;122 &ensp;131 &ensp;140<br><br>
+                    [11, 12, 13, 14, &ensp;2]&ensp;->&ensp;20, 110, 120, 130, 140&ensp;(110 - 20 = 90)<br><br>
+                    [12, 13, 14, &ensp;2, &ensp;3]&ensp;->&ensp;20, &ensp;30, 120, 130, 140&ensp;(120 - 30 = 90)<br><br>
+                    [13, 14, &ensp;2, &ensp;3, &ensp;4]&ensp;->&ensp;20, &ensp;30, &ensp;40, 130, 140&ensp;(130 - 40 = 90)<br><br>
+                    [14, &ensp;2, &ensp;3, &ensp;4,  &ensp;5]&ensp;->&ensp;20, &ensp;30, &ensp;40, &ensp;50, 140&ensp;(140 - 50 = 90)<br><br>
+                    可用這點來判斷牌組是否為順子。
+                </section>
+    
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    &emsp;Face * 10 + Suit<br><br>
+                    &emsp;例 :<br>
+                    &emsp;9D 8C 8S 8H 9S<br>
+                    &emsp;91 80 83 82 93 排序後 -> 80 82 83 91 93<br><br>
+                        <pre><code data-trim data-noescape>           
+                        for(int i = 0; i &lt; 4; i++)
+                        {
+                            for(int j = i + 1; j &lt;= 4; j++)
+                            {
+                                if(set[i] / 10 == set[j] / 10)
+                                {
+                                    same_num[i]++; // 跳過相同數字的牌
+                                }
+                            }
+                            i += same_num[i];
+                        }
+                        </code></pre>
+                    <br>
+                    &emsp;same_num[] = {2,0,0,1},<br>
+                    &emsp;2 表示排序後index = 0 的後面有兩張牌與它數字相同，<br>
+                    &emsp;且same_num[]中有兩個非0數字，就代表有兩對。
+                </section>
+            </section>
+            
+            <section>
+                <h3>大數除法 (進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    給定被除數 a 及非零除數 k，兩數相除滿足此等式：a = kq + r，<br><br>
+                    其中 q 為商數且必為整數，而 r 為餘數，且必為自然數，滿足 0 &lt;= r &lt; |k|<br><br><br><br>
+                    <img src="img/ch8/illustrate6.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>大數除法 (進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch8/in_out6-1.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>大數除法 (進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch8/in_out6-2.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>           
+                        #include &lt;stdio.h&gt;
+                        #include &lt;string.h&gt;
+                        #include &lt;stdbool.h&gt;
+
+                        int main()
+                        {
+                            char Dividend[40], Divisor[40],Divisor_copy[40],Quotient[40]; // 被除數(餘數), 除數, 除數副本, 商數
+                            int a = 0, k = 0, a_k, a_k_copy; // 被除數的個位數index, 除數的個位數index, 被除數與除數相差值(a-k), 被除數與除數相差值副本
+                            bool signed_1 = false, signed_2 = false, signed_Q = false; // false 表示正數, true 表示負數
+
+                            // 輸入被除數、除數
+
+                            // 找出被除數和除數個位數的index
+                            a = strlen(Dividend) - 1;
+                            k = strlen(Divisor) - 1;
+
+                            // 如果被除數或除數為負數，則紀錄其為負數，只取數字(i.e. index都往前一格)，ex: -125 儲存成 125(變成 正數除以正數)
+
+                            // 負數除以正數 或是 正數除以負數，商為負數
+
+                            // 除數放大10的(a-k)次方倍，這樣程式執行時間能大幅減少
+                            for(int i = k+1; i &lt;= a; i++)
+                            {
+                                Divisor[i] = '0';
+                            }
+
+                            // 開始進行相減
+
+                                // 判斷被除數與除數間的大小
+
+                                    // 若被除數 = 除數。則被除數 = 除數 * 10的(a-k)次方倍，可直接輸出商數、餘數 = 0
+                                    // 若被除數 &gt; 除數。直接相減，不夠減，向前借位
+                                    // 若被除數 &lt; 除數。判斷除數是否已變回原先的除數，若成立，表示已經無法再做減法，結束除法;若不成立，則除數 / 10後，繼續做減法
+                            
+                            // 若被除數為負數，且餘數不等於0，則 |商| + 1，且餘數 = 除數 - 餘數
+
+                            // 輸出商數、餘數
+
+                            return 0;
+                        }
+                    </code></pre>
+                </section>
+                
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    例 :<br>
+                    被除數 = 106 (a = 2)，除數 = 3 (k = 0)，要得到餘數，被除數就必須減掉除數35次<br><br>
+                    執行過程:<br>
+                    1. 除數放大10的(a-k)次方倍，也就是除數 * 10的2次方 = 300<br>
+                    2. 被除數(106) &lt; 除數(300)，除數 = 除數 / 10 = 30<br>
+                    3. 被除數(106) &gt; 除數(30)，被除數 = 被除數 - 除數 -> 106 - 30 = 76<br>
+                    4. 被除數(76) &gt; 除數(30)，被除數 = 被除數 - 除數 -> 76 - 30 = 46<br>
+                    5. 被除數(46) &gt; 除數(30)，被除數 = 被除數 - 除數 -> 46 - 30 = 16<br>
+                    6. 被除數(16) &lt; 除數(30)，除數 = 除數 / 10 = 3<br>
+                    7. 被除數(16) &gt; 除數(3)，被除數 = 被除數 - 除數 -> 16 - 3 = 13<br>
+                    8. 被除數(13) &gt; 除數(3)，被除數 = 被除數 - 除數 -> 13 - 3 = 10<br>
+                    9. 被除數(10) &gt; 除數(3)，被除數 = 被除數 - 除數 -> 10 - 3 = 7<br>
+                    10. 被除數(7) &gt; 除數(3)，被除數 = 被除數 - 除數 -> 7 - 3 = 4<br>
+                    11. 被除數(4) &gt; 除數(3)，被除數 = 被除數 - 除數 -> 4- 3 = 1<br>
+                    12. 被除數(1) &lt; 除數(3)。且除數已變回原先的除數，表示已經無法再做減法，<br>
+                    &emsp;&ensp;結束迴圈。             
+                </section>
+
+
+
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    結論:<br><br>
+                    除數 = 300 時沒有減過被除數。此時的除數是原先的除數乘以100倍<br>
+                    除數 = 30 時減過3次被除數。此時的除數是原先的除數乘以10倍<br>
+                    除數 = 3 時減過5次被除數。此時的除數是原先的除數乘以1倍<br>
+                    商數 = 3 * 10 + 5 * 1 = 35<br>
+                    餘數 = 1<br><br>
+                    ----------------------------------------------------------------------------------------------
+                    <br><br>
+                    &emsp;106  &ensp;/&ensp;   &ensp;3  &ensp;=&emsp;  35 + 1<br>
+                    &emsp;106  &ensp;/&ensp; (-3) &ensp;=&ensp; -35 + 1<br>
+                    (-106) &ensp;/&ensp;  &ensp; 3  &ensp;=&ensp; -36 + 2<br>
+                    (-106) &ensp;/&ensp; (-3) &ensp;=&ensp;  36 + 2<br><br>
+                    若被除數為負數，且餘數不等於0，則 |商| + 1，且餘數 = |除數| - 餘數
+                </section>
+            </section>
+
+        </div>
+    </div>
+    <div id="pageIndex"></div>
+    <!-- reveal.js-->
+    <script src="vendor/reveal/reveal.js"></script>
+    <!--plugin-->
+    <script src="vendor/reveal/plugin/math/math.js"></script>
+    <script src="vendor/reveal/plugin/search/search.js"></script>
+    <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+    <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+    <script src="main-ppt.js"></script>
+</body>
+
+</html>
