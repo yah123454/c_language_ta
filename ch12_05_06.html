@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1900">
+    <title>chapter 12</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/reveal/reset.css">
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css">
+    <!--edit-->
+    <!-- Pollyfill script -->
+    <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./dist/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./dist/bundle.js"></script>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .reveal {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 26px;
+        }
+
+        #pageIndex {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .controls {
+            bottom: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--
+            data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+            data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+            data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+            data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+            data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+            -->
+            <section>
+                <h3>骰子遊戲 (進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    A, B 兩人用二顆骰子計點比賽，<span style="color:red;">一開始都是點數 1 朝上，點數 4 朝玩家，點數 2 朝右</span>(骰子展開如下圖所示)。接下來 M 次修改操作，每次操作包含二個整數 x, y 代表兩個骰子操作。
+                    <span style="color:red;"><br>
+                    x, y 意義為：1 表示向前滾一次。2 表示向右滾一次</span>。操作修改完成，請輸出分數。<br><br>
+                    計分方式：<br>
+                    1. 若二顆點數均相同，計 0 分，例如 6, 6 或 3, 3。<br>
+                    2. 若二顆點數不同，加總二顆點數，例如 1, 2 (1+2=3 分)或 2, 6(2+6=8 分)。<br><br>
+                    <img src="img/ch12/dice.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>骰子遊戲 (進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch12/05_illustrate.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch12/05_demo1.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>骰子遊戲 (進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch12/05_demo2.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>           
+                        #include &lt;stdio.h&gt;
+
+                        void roll_forward_1(int dice_[][6], int dice); // 向前滾，dice表示骰子的編號
+                        void roll_rigth_2(int dice_[][6], int dice); // 向右滾
+
+                        int main()
+                        {
+                            int modify_num_A, modify_num_B; // 修正次數
+                            int modify_A[10][2], modify_B[10][2]; // 記錄修正方式
+                            int dice_A[2][6] = {{3,1,4,6,2,5},{3,1,4,6,2,5}},dice_B[2][6] = {{3,1,4,6,2,5},{3,1,4,6,2,5}};
+                            int points[2] = {0}; // points[0]表示A兩骰子的總和，points[1]表示B兩骰子的總和
+                            int mode; // 1 表示表示向前滾一次, 2 表示向右滾一次
+                                    // (依序為:前、上、後、下、右、左)
+
+                            // 請輸入A的修正次數
+                            // 請輸入A的修正方式
+                            // 跑迴圈，執行相應的修正方式
+
+                            // 請輸入B的修正次數
+                            // 請輸入B的修正方式
+                            // 跑迴圈，執行相應的修正方式
+
+                            // 輸出骰子六面點數
+                            // 比骰子大小，輸出結果
+                        }
+                    </code></pre>
+                    <img src="img/ch12/dice.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>文章處理 (進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    輸入一個英文句子 A (空白、大小寫英文字母組合)、 2個英文字(word-以大小寫英文字母組合) P, Q、整數 N、文章分析處理指令 C。
+                    <br><br>
+                    <img src="img/ch12/06_illustrate.png" style="display:block; margin:auto;">                
+                </section>
+            </section>
+
+            <section>
+                <h3>文章處理 (進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch12/06_illustrate.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch12/06_demo1.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>文章處理 (進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch12/06_illustrate.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch12/06_demo2.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>文章處理 (進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch12/06_illustrate.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch12/06_demo3.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>
+                        #include&lt;stdio.h&gt;
+                        #include&lt;stdbool.h&gt;
+                        #include&lt;string.h&gt;
+
+                        void count_freq(int A_len, char A_str[], int *word_num,char words[][15], int freq[]); // 計算單字頻率
+                        void find_max_position(int *word_num,int freq[],int *max_p, char words[][15]); // 找出頻率最高的單字index  
+                        void delete_word(int A_len, int P_len, char A_str[], char P_str[], char A_substr[]); // 刪除單字
+
+                        int main()
+                        {
+                            char A_str[150] = {'\0'};
+                            char A_substr[10] = {'\0'}; // 記錄 A_str 的子字串
+                            char P_str[10] = {'\0'};
+                            char Q_str[10] = {'\0'};
+                            int n, c;
+
+                            int p = 0; // 當 A_str 的indxe
+                            int A_len, P_len, Q_len; // 字串長度
+                            int max_p = 0;  // 頻率最高的單字index
+                            int word_num = 0;   // 計算words陣列裡已存的單字數量
+                            char words[30][15] = {'\0'}; // 出現過的單字
+                            char low_feq_words[30][15] = {'\0'}; // 頻率小於 N 的單字
+                            int freq[30] = {0}; // 單字出現頻率
+
+                            // 輸入英文句子 A
+                            scanf("%[^\n]", A_str); // 直到讀到換行鍵才會結束讀取，將讀到的字串存入 A_str
+                            
+                            // 輸入2個英文字 P,Q、整數 N、文章分析處理指令 C
+
+                            // 取得 A, P, Q 的長度
+                            A_len = strlen(A_str);
+                                                    
+                            if(c == 1) // C=1, 將文句 A 中 P 字串以 Q 字串取代。
+                            {
+                                while ( p < A_len)
+                                {
+                                    // 尋找 A 字串中是否有 P 字串
+
+                                    // 若找到 P 字串，則以 Q 字串取代 P 字串
+                                }
+                            }
+                            else if(c ==2) // // C=2, 在文句 A 中 P 字串前插入 Q 字串
+                            {
+                                while ( p < A_len)
+                                {
+                                    // 尋找 A 字串中是否有 P 字串
+
+                                    // 若找到 P 字串，在 A_str 中，把 P 字串(包含 P )以後的值都往後移動 Q_len + 1 個位置
+
+                                    // 插入Q_str
+                                }
+                            }
+                            else if(c == 3) // C=3, 將文句 A 中 P 字串刪除。
+                            {
+                                delete_word(A_len, P_len, A_str, P_str, A_substr);
+                            }
+                            else if(c == 4) // C=4, 統計文句 A 中英文字出現頻率前 2 高
+                            {
+                                count_freq(A_len, A_str, &word_num, words, freq);
+                        
+                                find_max_position(&word_num, freq, &max_p, words);
+                        
+                                freq[max_p] = 0; // 將最高的頻率清除為零
+                        
+                                find_max_position(&word_num, freq, &max_p , words);
+                            }
+                            else // C=5,將文句中,出現頻率小於 N 的英文字刪除。
+                            {
+                                count_freq(A_len, A_str, &word_num, words, freq);
+
+                                // 將頻率低於 N 的單字存在 low_feq_words
+
+                                // 跑迴圈執行 delete_word(A_len, P_len, A_str, P_str, A_substr)，刪除頻率低於 N 的單字
+                            }
+                        }
+                        
+                        void count_freq(int A_len, char A_str[], int *word_num, char words[][15], int freq[])
+                        {
+                            while ( p < A_len)
+                            {
+                                // 搜尋 words 陣列中是否已經存入單字
+
+                                // 若已存在，則頻率 + 1
+
+                                // 若不存在，表示此單字尚未出現過，則要加入 words 陣列中，頻率 = 1
+                            }
+                        }
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                style="text-align: left">
+                char A[5] = "123";<br><br>
+                char B[5] = "123";<br><br>
+                則 strcmp(A, B) = 0<br><br>
+
+                如果返回值小於 0，則表示 A 小於 B<br><br>
+                如果返回值大於 0，則表示 A 大於 B<br><br>
+                如果返回值等於 0，則表示 A 等於 B<br><br>
+                </section>
+
+            </section>
+        </div>
+    </div>
+    <div id="pageIndex"></div>
+    <!-- reveal.js-->
+    <script src="vendor/reveal/reveal.js"></script>
+    <!--plugin-->
+    <script src="vendor/reveal/plugin/math/math.js"></script>
+    <script src="vendor/reveal/plugin/search/search.js"></script>
+    <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+    <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+    <script src="main-ppt.js"></script>
+</body>
+
+</html>
