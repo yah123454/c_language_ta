@@ -156,51 +156,7 @@
                 </section>
             </section>
 
-            <section>
-                <h3>Tips</h3>
-                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br><br>
-                    <section data-auto-animate>
-                        <pre><code data-trim data-noescape>           
-                            #include &lt;stdio.h&gt;
-                            #include &lt;string.h&gt;
-                            #include &lt;math.h&gt;
-
-                            #define shapeText(TYPE) int (*perimeter)(struct TYPE*); \
-                                                    int (*area)(struct TYPE*);
-
-                            typedef struct shape_s {
-                                shapeText(shape_s); 
-                            } shape_t;
-                            
-                            typedef struct circle_s {
-                                shapeText(circle_s);
-                                int radius;
-                            } circle_t;
-                            
-                            typedef int (*MathMethod)(int); 
-                            
-                            int CirclePerimeter(int r) {return 4 * 2 * r;}
-                            int CircleArea(int r) { return 4 * r * r; }
-                            
-                            int Calc(int r, MathMethod Opt){
-                                    return Opt(r);
-                            }
-                            
-                            int main()
-                            {
-                                circle_t c;
-                                int radius;
-                                
-                                scanf("%d", &radius);
-                                c.radius = radius;
-                                
-                                printf("%d\n", Calc(c.radius, CirclePerimeter));
-                            }
-                        </code></pre>
-                    </section>
-                </section>
-            </section>
+            
 
             <section>
                 <h3>Tips</h3>
@@ -208,30 +164,6 @@
                     style="text-align: left"><br><br>  
                     三角形面積:<br>
                     <img src="img/ch17-1/formula.png" style="display:block; margin:auto;"><br><br>
-                    Function Pointer 範例:<br>
-                    <section data-auto-animate>
-                        <pre><code data-trim data-noescape>           
-                            typedef int (*MathMethod)(int, int); 
-
-                            int Mul(int a, int b) { return a*b; }
-                            int Divide(int a, int b) { return a/b; }
-                            int Minus(int a, int b) { return a-b; }
-                            int Add(int a, int b) { return a+b; } 
-
-                            int *Calc(int x, int y, MathMethod Opt){
-                                return Opt(x, y);
-                            } 
-
-                            int main()
-                            {
-                            int a = 8, b = 7;
-                            printf("a x b = %d\n", Calc(a, b, Mul)); 
-                            printf("a / b = %d\n", Calc(a, b, Divide));
-                            printf("a + b = %d\n", Calc(a, b, Minus));
-                            printf("a - b = %d\n", Calc(a, b, Add));
-                            }
-                        </code></pre>
-                    </section>
                 </section>
             </section>
 
