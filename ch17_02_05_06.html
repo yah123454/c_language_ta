@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1900">
+    <title>chapter 17</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/reveal/reset.css">
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css">
+    <!--edit-->
+    <!-- Pollyfill script -->
+    <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./dist/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./dist/bundle.js"></script>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .reveal {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 26px;
+        }
+
+        #pageIndex {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .controls {
+            bottom: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--
+            data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+            data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+            data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+            data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+            data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+            -->
+
+            <section>
+                <h3>Link List 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <span style="color:red;">
+                    本題須使用以下 Link List struct 實作才予計分。<br><br>
+                    typedef struct node_s{<br>
+                        &emsp;&emsp;int data;<br>
+                        &emsp;&emsp;struct node_s *next;<br>
+                    } node_t;</span><br><br>
+
+                    針對空的 List,先進行 N 個資料節點加入,再進行加入、刪除、交換、反轉等操作。
+                    輸出操作後 Link List 資料。測試資料不會出現相同整數資料。
+                </section>
+            </section>
+
+            <section>
+                <h3>Link List 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/05_i.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch17-2/05_in_out1.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>LinkList 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/05_in_out1.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch17-2/05_in_out11.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>LinkList 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/05_in_out2.png" style="display:block; margin:auto;"><br>
+                </section>
+            </section>
+
+            <section>
+                <h3>LinkList 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/05_in_out3.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch17-2/05_in_out33.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+            
+            <section>
+                <h3>LinkList 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/05_in_out4.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch17-2/05_in_out44.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>LinkList 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/05_in_out5.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch17-2/05_in_out55.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>LinkList 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/05_in_out6.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch17-2/05_in_out66.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>LinkList 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/05_in_out7.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch17-2/05_in_out77.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>           
+                        #include &lt;stdio.h&gt;
+                        #include &lt;stdlib.h&gt;
+                        #include &lt;stdbool.h&gt;
+                            
+                        typedef struct node_s{
+                            int data;
+                            struct node_s *next;
+                        }node_t;
+                            
+                        node_t *createList(int); // 串列建立函數
+                        node_t *add_Node(node_t *,int); // 1.從最後面加入資料 x 
+                        node_t *delete_the_front(node_t *); // 2.刪除最前面節點，若 List 無節點，則不必刪除。
+                        node_t *delete_the_back(node_t *); // 3.刪除最後面節點，若 List 已無節點，則不必刪除。
+                        node_t *delete_x_node(node_t *, int); // 4.刪除 List 內資料為 x 的節點；若 x 不存在則不刪除任何節點。
+                        node_t *add_y_node(node_t *, int, int); // 5.搜尋 List 內資料為 x 的節點，並在其後加入數值 y 的新節點。若 x 不在 List 中，則不必加入 y 。
+                        node_t *Reverse(node_t *);// 6. 反轉 Link List。
+                        node_t *Change_position(node_t *, int, int);// 7. 交換數值為 x 和 y 節點的位置，若 x 或 y 不在 List中，則不必交換。
+                        void printList(node_t *);  // 串列列印函數
+
+                        int main()
+                        {
+                            node_t *first;
+                            first = createList(node_num);
+
+                            printList(first);
+                        }
+
+                        //串列列印函數
+                        void printList(node_t *first){
+                            node_t *node = first; //將node指向第一個節點
+                            if(first == NULL){
+                                printf("None\n");
+                            }else{
+                                while(node != NULL){
+                                    printf("%d ",node->data);
+                                    node = node->next;
+                                }
+                                printf("\n");
+                            }
+                        } 
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <span style="color:red;">(使用以下 struct 與 Link List 實作才計分)</span><br>
+                    (1) void add(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相加,Z 是結果<br><br>
+                    (2) void sub(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果<br><br>
+                    (3) void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相乘,Z 是結果<br><br>
+                    <span style="color:red;">
+                    typedef struct node_s {<br>
+                        &emsp;&emsp;int coef;<br>
+                        &emsp;&emsp;int exp;<br>
+                        &emsp;&emsp;struct node_s * next;<br>
+                    } node_t;<br><br>
+
+                    typedef node_t * nodep_t; //此行重新命名node_t*，之後nodep_t 都代表node_t*<br><br> 
+
+                    typedef struct pol_s {<br>
+                        &emsp;&emsp;nodep_t root;<br>
+                    } pol_t;
+                    </span>
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/06_i.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/06_in_out1.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/06_in_out2.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/06_in_out3.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>
+                        #include &lt;stdio.h&gt;
+                        #include &lt;stdlib.h&gt;
+                        #include &lt;stdbool.h&gt;
+
+                        typedef struct node_s {
+                            int coef;
+                            int exp;
+                            struct node_s * next;
+                        } node_t; 
+                        
+                        typedef node_t * nodep_t; // 此行重新命名node_t*，之後nodep_t 都代表node_t*
+                        
+                        typedef struct pol_s {
+                            nodep_t root;
+                        } pol_t; // pol_t是指Linked list的第一個node。
+                        
+                        void add(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相加,Z 是結果
+                        void sub(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果
+                        void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相乘,Z 是結果
+                        
+                        nodep_t createList(int); // 串列建立函數
+                        void printList(nodep_t);  // 串列列印函數 
+                        
+                        int main()
+                        {
+                            nodep_t x_first;
+
+                            pol_t *x;
+
+                            x = (pol_t *) malloc(sizeof(pol_t));
+                            
+                            x->root = x_first;
+                        }
+                    </code></pre>
+                </section>
+            </section>
+        </div>
+    </div>
+    <div id="pageIndex"></div>
+    <!-- reveal.js-->
+    <script src="vendor/reveal/reveal.js"></script>
+    <!--plugin-->
+    <script src="vendor/reveal/plugin/math/math.js"></script>
+    <script src="vendor/reveal/plugin/search/search.js"></script>
+    <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+    <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+    <script src="main-ppt.js"></script>
+</body>
+
+</html>
